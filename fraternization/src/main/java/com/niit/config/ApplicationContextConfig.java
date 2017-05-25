@@ -16,7 +16,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
-
+// im commenting.....
 @Configuration
 @ComponentScan(basePackages="com.niit")
 @EnableTransactionManagement

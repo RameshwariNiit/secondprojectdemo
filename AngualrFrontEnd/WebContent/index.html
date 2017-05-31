@@ -14,31 +14,33 @@
   <script type="text/javascript" src="application.js"></script>
   <script type="text/javascript" src="./scripts/login.js"></script>
   <script type="text/javascript" src="./scripts/logincontrol.js"></script>
+  <script type="text/javascript" src="./scripts/blogcontrol.js"></script>
+  
   <link href="./style/login.css" rel="stylesheet"/>
   <script type="text/javascript" src="./scripts/usercreate.js"></script>
+  <script type="text/javascript" src="./scripts/jobcontrol.js"></script>
   
 </head>
 <body>
 
-<nav class="navbar navbar-inverse" ng-hide="Userrole=='Admin'" ng-controller='HomeController'>
+<nav class="navbar navbar-inverse" ng-hide="Userrole=='Admin'" >
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">CollborationPortal</a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Page 1-1</a></li>
-          <li><a href="#">Page 1-2</a></li>
-          <li><a href="#">Page 1-3</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Page 2</a></li>
+   
+      <li class="dropdown" ng-show="Userrole=='student'"><a class="dropdown-toggle" data-toggle="dropdown" href="#/blog">Blog</span></a></li>
+    
     </ul>
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right" ng-hide="Userrole=='student'">
       <li><a href="#/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li data-toggle="modal" data-target="#myModal"><a href="#"><span class="glyphicon glyphicon-log-in" ></span> Login</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" ng-show="Userrole=='student'" ng-controller="HomeController as home">
+      <li><a href ng-click="home.logout()"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+     
     </ul>
   </div>
 </nav>
@@ -46,19 +48,19 @@
 <div ng-include="'./userdata/login.html'" ng-controller='LoginController as logCtrl'></div>
 
 
-<nav class="navbar navbar-inverse" ng-show="Userrole=='Admin'">
+<nav class="navbar navbar-inverse" ng-show="Userrole=='Admin'" ng-controller="HomeController as home">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">CollborationPortal</a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">AdminHome</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">JobPosting</a></li>
+            <li><a href="#/blog">Blog</a></li>
+            <li><a href="#/jobposting">JobPosting</a></li>
    			      
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href=""><span class="glyphicon glyphicon-user"></span>Logout</a></li>
+      <li><a href ng-click="home.logout()"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
      
     </ul>
   </div>

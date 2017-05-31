@@ -1,35 +1,38 @@
 package com.niit.domain;
 
-import java.util.Date;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-@Table(name="Job", schema="secondp")
+@Table(name="BlogDomain", schema="secondp")
 @Entity
-public class Job 
-{ 
-	
+public class BlogDomain
+{
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	private long jobId;
-	@Size(min=5, max=50, message="Job Title should be 5 - 50 characters.")
+	private long blogId;
+	
+	@Size(min=5, max=50, message="Blog Title should be 5 - 50 characters.")
 	private String title;
-	@Size(min=5, max=300, message="Your job name should be between 5 - 10 characters.")
+	@Size(min=5, max=1000, message="Blog Description should be 5 - 1000 characters.")
 	private String description;
-	private Date dated;
-	@Size(min=2, max=50, message="Your qualifications should be between 5 - 10 characters.")
-	private String qualification;
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="userId")
+	private UserDomain user;
 	private String status;
-	public long getJobId() {
-		return jobId;
+	
+	
+	public long getBlogId() {
+		return blogId;
 	}
-	public void setJobId(long jobId) {
-		this.jobId = jobId;
+	public void setBlogId(long blogId) {
+		this.blogId = blogId;
 	}
 	public String getTitle() {
 		return title;
@@ -43,17 +46,11 @@ public class Job
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Date getDated() {
-		return dated;
+	public UserDomain getUser() {
+		return user;
 	}
-	public void setDated(Date dated) {
-		this.dated = dated;
-	}
-	public String getQualification() {
-		return qualification;
-	}
-	public void setQualification(String qualification) {
-		this.qualification = qualification;
+	public void setUser(UserDomain  user) {
+		this.user = user;
 	}
 	public String getStatus() {
 		return status;
@@ -63,11 +60,4 @@ public class Job
 	}
 	
 	
-
-	
-	
-	
-	
-	
-
 }

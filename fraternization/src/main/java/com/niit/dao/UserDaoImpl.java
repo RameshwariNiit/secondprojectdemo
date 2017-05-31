@@ -79,6 +79,17 @@ public class UserDaoImpl implements UserDao
 			return false;
 	}
 
+
+
+
+
+	public UserDomain getUserId(int userId) {
+		Session session=sessionFactory.getCurrentSession();
+		UserDomain user=(UserDomain)session.createQuery("from UserDomain where userId="+userId).getSingleResult();
+				return user;
+
+	}
+
 	
 
 }

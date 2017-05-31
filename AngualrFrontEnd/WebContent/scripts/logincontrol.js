@@ -1,5 +1,5 @@
 var loginapp=angular.module('loginapp',[]);
-loginapp.controller('LoginController',function(LoginService,$location,$rootScope,$cookies){
+loginapp.controller('LoginController',function(LoginService,$location,$rootScope,$cookies,$cookieStore){
 	
 	this.message='this is login controller';
 	var logCtrl=this;
@@ -14,16 +14,19 @@ loginapp.controller('LoginController',function(LoginService,$location,$rootScope
 			function(response)
 			{
 				console.log(response);
+				$cookieStore.put('currentUser',response.data);
 				if(response.data.role=='Admin')
 					{
 					console.log("admin part")
 					$cookies.put('role',response.data.role);
+					
 					$rootScope.Userrole=$cookies.get('role');
 					}
 				else if(response.data.role=='student')
 					{
 					console.log("student part")
-					$rootScope.Userrole='User'
+					$cookies.put('role',response.data.role);
+					$rootScope.Userrole=$cookies.get('role');
 					
 					}
 				if(response.status="200")

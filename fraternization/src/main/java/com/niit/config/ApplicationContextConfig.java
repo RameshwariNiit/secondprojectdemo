@@ -9,7 +9,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
@@ -18,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 // im commenting.....
 @Configuration
-@ComponentScan(basePackages="com.niit")
+@ComponentScan(basePackages={"com.niit"} ,excludeFilters = { @Filter(type = FilterType.ANNOTATION, value = Configuration.class) })
 @EnableTransactionManagement
 public class ApplicationContextConfig 
 {

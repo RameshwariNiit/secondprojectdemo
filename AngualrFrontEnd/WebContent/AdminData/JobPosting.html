@@ -3,33 +3,28 @@
 <div class="container">
   <h2>JobPosting Details</h2>
   
-  <form  ng-submit='regCtrl.regUser()'>
+  <form  ng-submit='jobCtrl.jobPosting()'>
+  {{jobCtrl.message}}
     <div class="form-group">
-      <label for="title">UserName:</label>
-      <input type="text" class="form-control" id="title" ng-model="" placeholder="Enter title" name="title">
+      <label for="title">Job Title:</label>
+      <input type="text" class="form-control" id="title" ng-model="jobCtrl.job.title" placeholder="Enter title" name="title">
     </div>
      <div class="form-group">
-      <label for="">Email:</label>
-      <input type="email" class="form-control" id="emailid" ng-model="regCtrl.user.emailid" placeholder="Enter email" name="emailid">
+      <label for="">Job Description:</label>
+      <textarea class="form-control" id="description" ng-model="jobCtrl.job.description"  name="description"/>
     </div>
     <div class="form-group">
-      <label for="passwordd">Password:</label>
-      <input type="password" class="form-control" ng-model="regCtrl.user.password" id="pwd" placeholder="Enter password" name="password">
+      <label for="passwordd">Job Qualification:</label>
+      <input type="text" class="form-control" ng-model="jobCtrl.job.qualification" id="qualification" placeholder="qualification" name="qualification">
     </div>
     <div class="form-group">
-      <label for="contactno">Contact NO:</label>
-      <input type="text" class="form-control" ng-model="regCtrl.user.contactno" id="contactno" placeholder="Enter Contact Number" name="contactno">
-    </div>
-     <div class="form-group">
-      <label for="role">As a:</label>
-      <input type="radio" class="form-control" id="role"  name="role" ng-model="regCtrl.user.role" value='student' >Student
-      <input type="radio" class="form-control" id="role"  name="role" ng-model="regCtrl.user.role" value='faculty' >Faculty
-      
+      <label for="contactno">Interview Date:</label>
+      <input type="date" class="form-control" ng-model="jobCtrl.job.dated" id="interviewdate" name="inteviewdate">
+      <input type="hidden" class="form-control" ng-model="jobCtrl.job.status" id="status" name="status" value="pending">
     </div>
     
-    <div class="checkbox">
-      <label><input type="checkbox" name="remember"> Remember me</label>
-    </div>
+    
+   
     <button type="submit" class="btn btn-default">Submit</button>
   </form>
 </div>

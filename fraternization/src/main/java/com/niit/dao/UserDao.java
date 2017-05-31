@@ -11,6 +11,8 @@ public interface UserDao
 	public boolean isExistingUser(UserDomain user);
 	public UserDomain getUserByUsername(String username);
 	public UserDomain getEmailid(String email,String password);
+	public UserDomain getUserId(int userId);
+
 	/*public void updateUser(UserDomain user);
 	public void deleteUser(UserDomain user);
 

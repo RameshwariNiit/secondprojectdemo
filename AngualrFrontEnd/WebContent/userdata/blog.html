@@ -1,0 +1,17 @@
+<div>
+
+<form novalidate="novalidate" ng-submit="blogCtrl.submitBlog()">
+
+<div class="form-group">
+<label for="blogTitle">Blog Title</label>
+<input type="text" class="form-control" ng-model="blogCtrl.blog.title">
+</div>
+<div class="form-group">
+<label for="blogTitle">Blog Description</label>
+<textarea class="form-control" ng-model="blogCtrl.blog.description"/>
+
+<input type="submit" value="submit">
+</div>
+
+</form>
+</div>

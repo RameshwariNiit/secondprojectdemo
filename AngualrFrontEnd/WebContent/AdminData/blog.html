@@ -1,17 +1,10 @@
 <div>
 
-<form novalidate="novalidate" ng-submit="blogCtrl.submitBlog()">
+<table border="1">
+<tr><th>Blog Title</th><th>Blog Description</th><th>status</th></tr>
+<tr ng-repeat="blog in allBlogs" >
+<td>{{blog.title}}</td><td>{{blog.description}}</td><td>{{blog.status}}</td><td><button ng-click=blogCtrl.decision('approve',blog.blogId) class="btn btn-success">Approve</button></td><td><button ng-click=blogCtrl.decision('decline',blog.blogId) class="btn btn-danger">Decline</button></td>
+</tr>
+</table>
 
-<div class="form-group">
-<label for="blogTitle">Blog Title</label>
-<input type="text" class="form-control" ng-model="blogCtrl.blog.title">
-</div>
-<div class="form-group">
-<label for="blogTitle">Blog Description</label>
-<textarea class="form-control" ng-model="blogCtrl.blog.description"/>
-
-<input type="submit" value="submit">
-</div>
-
-</form>
 </div>

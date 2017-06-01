@@ -59,8 +59,11 @@ public class BlogDaoImpl implements BlogDao
 
 	@SuppressWarnings("unchecked")
 	public List<BlogDomain> listBlogs() {
-		Session session=sessionFactory.getCurrentSession();
+		Session session=sessionFactory.openSession();
+		Transaction tx=session.beginTransaction();
 		List<BlogDomain> blogs=session.createQuery("from BlogDomain").getResultList();
+		tx.commit();
+		
 		
 		return blogs;
 

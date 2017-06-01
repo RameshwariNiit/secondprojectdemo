@@ -56,6 +56,15 @@ app.config(function($routeProvider)
 		.when("/blog",
 			
 	{
+		templateUrl :'./userdata/blog.html',
+		controller : 'BlogController',
+		controllerAs:'blogCtrl'
+		
+			
+	})
+		.when("/allblog",
+			
+	{
 		templateUrl :'./AdminData/blog.html',
 		controller : 'BlogController',
 		controllerAs:'blogCtrl'
